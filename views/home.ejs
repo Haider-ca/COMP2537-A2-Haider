@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Home</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-  <% if (!user) { %>
-    <h1>Welcome!</h1>
-    <a href="/signup">Sign Up</a> | <a href="/login">Log In</a>
-  <% } else { %>
-    <h1>Hello, <%= user.name %>!</h1>
-    <a href="/members">Members Area</a> | <a href="/logout">Sign Out</a>
-  <% } %>
-</body>
-</html>
+<%- include('templates/header', { user, title: 'Home' }) %>
+
+  <div class="text-center py-5">
+    <% if (!user) { %>
+      <h1 class="mb-4">Welcome to PathPal!</h1>
+      <a href="/signup" class="btn btn-primary me-2">Sign Up</a>
+      <a href="/login" class="btn btn-outline-primary">Log In</a>
+      <% } else { %>
+        <h1 class="mb-4">Hello, <%= user.name %>!</h1>
+        <a href="/members" class="btn btn-primary me-2">Members Area</a>
+        <a href="/logout" class="btn btn-outline-secondary">Sign Out</a>
+        <% } %>
+  </div>
+
+  <%- include('templates/footer') %>

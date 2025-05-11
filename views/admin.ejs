@@ -1,0 +1,21 @@
+<%- include('templates/header', { user, title }) %>
+  <h1>Admin Dashboard</h1>
+  <ul class="list-group">
+    <% users.forEach(u=> { %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span>
+          <%= u.name %> — <strong>
+              <%= u.user_type %>
+            </strong>
+        </span>
+        <div>
+          <% if (u.user_type==='user' ) { %>
+            <a href="/admin/promote/<%= u.email %>" class="btn btn-sm btn-primary">Promote</a>
+            <% } else if (u.user_type==='admin' && u.email !==user.email) { %>
+              <a href="/admin/demote/<%= u.email %>" class="btn btn-sm btn-warning">Demote</a>
+              <% } %>
+        </div>
+      </li>
+      <% }) %>
+  </ul>
+  <%- include('templates/footer') %>
