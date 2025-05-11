@@ -1,7 +1,24 @@
-<%- include('templates/header', { user, title: '403 Forbidden' }) %>
-  <div class="text-center py-5">
-    <h1 class="display-1">403</h1>
-    <p class="lead">You don’t have permission to view this page.</p>
-    <a href="/" class="btn btn-primary">Return Home</a>
+<%- include('templates/header', { user, title: 'Access Denied' }) %>
+
+  <div class="container d-flex flex-column justify-content-center align-items-center vh-75 text-center">
+    <!-- Big emoji as a friendly icon -->
+    <div class="mb-4">
+      <span class="display-1">🚫</span>
+    </div>
+
+    <h1 class="display-3">Access Denied</h1>
+    <p class="lead mb-4">
+      Sorry, you don’t have permission to view this page.
+    </p>
+
+    <div>
+      <a href="/" class="btn btn-primary me-2">Home</a>
+      <% if (!user) { %>
+        <a href="/login" class="btn btn-outline-primary">Log In</a>
+        <% } else { %>
+          <a href="/members" class="btn btn-outline-secondary">Members Area</a>
+          <% } %>
+    </div>
   </div>
+
   <%- include('templates/footer') %>
